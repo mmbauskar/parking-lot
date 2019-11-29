@@ -16,7 +16,40 @@ def create_parking_lot(size, *args):
 
 def leave(slot, *args):
     ''' remove car's from the parking lot '''
-    pass
+    slot_size = parking_info.get('slot_size', [])
+    parked_cars = parking_info.get('parked_cars', [])
+    empty_parking = parking_info.get('empty_parking', [])
+    cars_by_color = parking_info.get('cars_by_color', {})
+    cars_by_registration_no = parking_info.get('cars_by_registration_no', {})
+
+    if not slot.isdigit() or slot_size < int(slot):
+        print 'Invalid Input, Available slots in the parking area are {0}'.format(slot_size)
+
+    elif int(slot) not in parked_cars:
+        print 'Can not found, slot in parked car, Please check again'
+
+    slot = int(slot)
+    car_details = parking_info.get(slot, {})
+
+    color = car_details.get('color', '')
+    registration_no = car_details.get('registration_no', '')
+
+    parking_info.pop(slot)
+    parked_cars.remove(slot)
+    cars_by_registration_no.pop(registration_no)
+
+    same_colored_car_slots = cars_by_color.get(color, [])
+    same_colored_car_slots.remove(slot)
+    cars_by_color.update({ color: same_colored_car_slots })
+
+    empty_parking.append(slot)
+    empty_parking.sort()
+
+    parking_info.update({
+        'cars_by_color': cars_by_color,
+        'empty_parking': empty_parking,
+        'cars_by_registration_no': cars_by_registration_no
+    })
 
 def park(registration_no, color, *args):
     ''' park the car to parking lot '''
