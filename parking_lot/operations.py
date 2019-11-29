@@ -1,4 +1,3 @@
-import json
 from __init__ import parking_info
 
 def create_parking_lot(size, *args):
