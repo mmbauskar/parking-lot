@@ -1,5 +1,5 @@
 
-from operations import create_parking_lot, leave, park
+from operations import create_parking_lot, leave, park, leave_by_reg
 from status import (
     status, slot_number_for_registration_number, slot_numbers_for_cars_with_colour,
     registration_numbers_for_cars_with_colour
@@ -10,6 +10,7 @@ commands_mapper = {
     'park': park,
     'leave': leave,
     'status': status,
+    'leave-by-reg': leave_by_reg,
     'create_parking_lot': create_parking_lot,
     'slot_numbers_for_cars_with_colour': slot_numbers_for_cars_with_colour,
     'slot_number_for_registration_number': slot_number_for_registration_number,
