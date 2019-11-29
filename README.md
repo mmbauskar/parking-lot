@@ -41,4 +41,19 @@ $​ leave 4
     Slot number 4 is free
 ```
 
+
+Commands supported are
+
+* exit
+* park
+* leave
+* status
+* create_parking_lot
+* slot_numbers_for_cars_with_colour
+* slot_number_for_registration_number
+* registration_numbers_for_cars_with_colour
+
+To run the app,
+
+Go To `parking-log` and run `python parking_lot` then enter the commands one by one
 etc.
