@@ -49,6 +49,7 @@ def leave(slot, *args):
         'empty_parking': empty_parking,
         'cars_by_registration_no': cars_by_registration_no
     })
+    print "Removed Car from {0}".format(slot)
 
 def park(registration_no, color, *args):
     ''' park the car to parking lot '''
@@ -79,12 +80,12 @@ def park(registration_no, color, *args):
         return
 
     if len(empty_parking):
-        # empty_parking.sort()
         slot = empty_parking.pop(0)
     else:
         slot = max(parked_cars) + 1 if parked_cars else 1
-        parked_cars.append(slot)
-        parked_cars.sort()
+
+    parked_cars.append(slot)
+    parked_cars.sort()
 
     same_colored_car_slots = cars_by_color.get(color, [])
     same_colored_car_slots.append(slot)
